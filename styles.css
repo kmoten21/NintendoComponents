@@ -1,0 +1,320 @@
+:root {
+  --header-bg: #ffffff;
+  --nintendo-red: #e60012;
+  --pill-gray: #f0f0f0;
+  --text-dark: #222222;
+  --sidebar-dark: #161412;
+  --sidebar-warm: #362c1e;
+  --gold-accent: #d4af37;
+  --gold-light: #f3e5ab;
+  --zelda-green: #0a3622;
+  --page-bottom: #0d0c0a;
+  --shadow-dark: rgba(0, 0, 0, 0.65);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "geologica-variable", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--page-bottom);
+  overflow-x: hidden;
+}
+
+
+.result-section {
+  width: 100%;
+}
+
+
+.top-nav {
+  height: 52px;
+  background-color: var(--header-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: relative;
+  z-index: 20;
+}
+
+.nintendo-logo {
+  background-color: var(--nintendo-red);
+  color: var(--header-bg);
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+  padding: 4px 14px;
+  border-radius: 20px;
+  border: 2px solid var(--header-bg);
+  box-shadow: 0 0 0 2px var(--nintendo-red);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.search-pill {
+  background-color: var(--pill-gray);
+  color: var(--text-dark);
+  padding: 6px 28px 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: var(--text-dark);
+  cursor: pointer;
+}
+
+.loginbtn {
+  text-decoration: none;
+  color: var(--nintendo-red);
+  border: 1.5px solid var(--nintendo-red);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.page-wrapper {
+  display: flex;
+  width: 100%;
+  min-height: calc(100vh - 52px);
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-checkbox {
+  display: none;
+}
+
+.left-sidebar {
+  width: 64px;
+  flex-shrink: 0;
+  position: relative;
+  background: linear-gradient(180deg, var(--sidebar-warm) 0%, var(--sidebar-dark) 100%);
+  border-right: 2px solid var(--gold-accent);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  z-index: 15;
+}
+
+.triforce-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.tri-row {
+  display: flex;
+  gap: 2px;
+}
+
+.tri-up {
+  width: 14px;
+  height: 12px;
+  background-color: var(--gold-accent);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+.menu-trigger {
+  background: none;
+  border: none;
+  color: var(--gold-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.hamburger-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 24px;
+}
+
+.hamburger-lines .line {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background-color: var(--gold-light);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.text-close {
+  display: none;
+}
+
+.menu-checkbox:checked ~ .left-sidebar .text-menu {
+  display: none;
+}
+
+.menu-checkbox:checked ~ .left-sidebar .text-close {
+  display: inline;
+}
+
+.menu-checkbox:checked ~ .left-sidebar .hamburger-lines .line:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menu-checkbox:checked ~ .left-sidebar .hamburger-lines .line:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-checkbox:checked ~ .left-sidebar .hamburger-lines .line:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+.sidebar-spacer {
+  height: 24px;
+}
+
+/* Slide-Out Navigation Drawer */
+.nav-drawer {
+  position: absolute;
+  top: 0;
+  left: 64px;
+  width: calc(100% - 64px);
+  height: 100%;
+  background-color: var(--page-bottom);
+  background-image: linear-gradient(180deg, var(--sidebar-warm) 0%, var(--page-bottom) 24%);
+  z-index: 12;
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.45s;
+  display: flex;
+  align-items: center;
+  padding-left: 11%;
+}
+
+.menu-checkbox:checked ~ .nav-drawer {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+.drawer-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.drawercrest {
+  width: 95px;
+  height: auto;
+  margin-bottom: 36px;
+  margin-left: 28px;
+  display: block;
+}
+
+.drawer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.drawer-links a,
+.drawer-link {
+  position: relative;
+  color: var(--header-bg);
+  text-decoration: none;
+  font-family: "new-spirit-compressed", "new-spirit", 'Fraunces', Georgia, serif;
+  font-size: 36px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 24px 4px 0;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.drawer-links a::before,
+.drawer-link::before {
+  content: '▷';
+  font-size: 16px;
+  color: var(--gold-accent);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.drawer-links a::after,
+.drawer-link::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 320px;
+  height: 38px;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, var(--sidebar-warm) 0%, transparent 100%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: -1;
+}
+
+.drawer-links a:hover,
+.drawer-link.active {
+  color: var(--header-bg);
+  transform: translateX(4px);
+}
+
+.drawer-links a:hover::before,
+.drawer-link.active::before,
+.drawer-links a:hover::after,
+.drawer-link.active::after {
+  opacity: 1;
+}
+
+/* Hero Background & Crest */
+.hero-stage {
+  flex: 1;
+  min-height: calc(100vh - 52px);
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--zelda-green);
+  background-image: url('Zelda_40Anniversary_BG_Overview_Logo.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.crest {
+  width: clamp(210px, 21vw, 310px);
+  height: auto;
+  z-index: 10;
+  filter: drop-shadow(0 14px 24px var(--shadow-dark));
+}
+
+.lower-banner {
+  display: none;
+}
