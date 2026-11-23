@@ -292,7 +292,6 @@ body {
   opacity: 1;
 }
 
-/* Hero Background & Crest */
 .hero-stage {
   flex: 1;
   min-height: calc(100vh - 52px);
